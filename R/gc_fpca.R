@@ -71,17 +71,10 @@ gc_fpca <- function(formula, data, binwidth = 10, family = "gaussian",
 
 
     # Step 2: Fit local GLMMs; extract linear predictor estimates.
-    # start next fit at previous result if warm_start
-    start_k <- if (!warm_start || k == 1 ) {
-      NULL
-    } else {
-      list(theta = fit_k@theta, fixef = fit_k@beta)
-    }
     fit_k <- glmer(
       formula,
       data = data_k, family = family,
-      control=glmerControl(optimizer="bobyqa",optCtrl=list(maxfun=2e5)),
-      start = start_k
+      control=glmerControl(optimizer="bobyqa",optCtrl=list(maxfun=2e5))
     )
 
     fit_ls[[k]] <- data.frame("id" = 1:I,
@@ -112,7 +105,7 @@ gc_fpca <- function(formula, data, binwidth = 10, family = "gaussian",
   fpca_latent <- fpca.face(as.matrix(select(fit_df_wide, -id)),
                            pve = pve,
                            npc = npc,
-                           argvals = 1:K,
+                           argvals =1:K,
                            knots = knots,
                            lower=0)
 
