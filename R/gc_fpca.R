@@ -228,5 +228,6 @@ gc_fpca <- function(formula, data, binwidth = 10, family = "gaussian",
   return(c(fixed_effect,
            list(efunctions = efunctions,
                 scores = scores,
-                etas = etas)))
+                etas = etas),
+           model = list(fit_gcfpca))) # !
 }
