@@ -96,8 +96,8 @@ plot_gcfpca_eta <- function(m, sim) {
 # simulate data
 library(splines)
 
-I <- 10
-K <- 500
+I <- 50
+K <- 1000
 
 # simulate data and save results
 set.seed(1133)
@@ -184,6 +184,11 @@ pffr_count_pcre_time
 
 plot_pffr(pffr_count_pcre)
 plot_pffr_eta(pffr_count_pcre, count_sim)
+```
+
+
+```{r}
+save.image(file = "gfamm-checks-sim.RData")
 ```
 
 -----------------------------
@@ -402,5 +407,5 @@ df_long %>%
 ``` 
 
 ```{r}
-save.image(file = "gfamm-checks.RData")
+save.image(file = "gfamm-checks-full.RData")
 ```
